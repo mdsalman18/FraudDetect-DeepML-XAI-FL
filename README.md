@@ -6,7 +6,7 @@ A robust system for detecting fraudulent transactions using Deep Learning, Expla
 
 This project integrates advanced machine learning models with explainable AI techniques to detect fraud in financial transactions. It also supports federated learning for decentralized training.
 
-Step:1 Clone the repository
+###Step:1### Clone the repository
 git clone https://github.com/your-username/FraudDetect-DeepML-XAI-FL.git
 cd FraudDetect-DeepML-XAI-FL
 
