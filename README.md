@@ -13,6 +13,9 @@ cd FraudDetect-DeepML-XAI-FL
 Step:2 Install dependencies:
 pip install -r requirements.txt
 
+Python Version:
+This project is built and tested with Python 3.12.6. Make sure you're using the correct version for compatibility.
+
 Step3: Database Setup
 Make sure you have XAMPP or MySQL Workbench installed.Import the SQL file
 Locate the file frauddetect_transactions.sql in the project directory.Import it into your MySQL server (via phpMyAdmin or MySQL Workbench).Ensure your database credentials in the project match your MySQL setup.
