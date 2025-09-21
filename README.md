@@ -113,8 +113,7 @@ db_config = {
 
 #### SQL Tables Required:
 
-Run the following SQL to set up the database:
-
+Run the frauddetect_transactions.sql file to set up the database:
 
 ---
 
