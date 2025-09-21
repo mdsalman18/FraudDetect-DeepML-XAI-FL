@@ -1,7 +1,3 @@
-To generate a complete README for your Flask-based **Fraud Detection System**, here’s a detailed version that explains setup, features, and usage:
-
----
-
 # 🕵️ Fraud Detection System (Flask + ML)
 
 This project is a full-stack web application designed to detect fraudulent financial transactions using machine learning and deep learning models. It includes both a **remote user portal** and an **admin dashboard**, integrated with various classification models (DNN, SVM, Logistic Regression, Gradient Boosting).
