@@ -1,30 +1,211 @@
-# FraudDetect-DeepML-XAI-FL
+To generate a complete README for your Flask-based **Fraud Detection System**, here’s a detailed version that explains setup, features, and usage:
 
-A robust system for detecting fraudulent transactions using Deep Learning, Explainable AI (XAI), and Federated Learning techniques.
+---
 
-🚀 Project Overview
+# 🕵️ Fraud Detection System (Flask + ML)
 
-This project integrates advanced machine learning models with explainable AI techniques to detect fraud in financial transactions. It also supports federated learning for decentralized training.
+This project is a full-stack web application designed to detect fraudulent financial transactions using machine learning and deep learning models. It includes both a **remote user portal** and an **admin dashboard**, integrated with various classification models (DNN, SVM, Logistic Regression, Gradient Boosting).
 
-Step:1 Clone the repository
-git clone https://github.com/your-username/FraudDetect-DeepML-XAI-FL.git
-cd FraudDetect-DeepML-XAI-FL
+---
 
-Step:2 Install dependencies:
+## 📁 Project Structure
+
+```
+fraud-detection/
+│
+├── static/                   # Static files (CSS, JS, etc.)
+├── templates/                # HTML templates
+│
+├── updated_synthetic_fraud_dataset.csv
+├── model_results.json
+├── fraud_detection_dnn_model.h5
+├── svm_fraud_model.pkl
+├── logistic_regression_fraud_model.pkl
+├── gradient_boosting_fraud_model.pkl
+│
+├── app.py                    # Main Flask app
+└── README.md
+```
+
+---
+
+## ⚙️ Features
+
+* 🔐 **User Authentication**
+
+  * Remote User: Registration/Login
+  * Service Provider (Admin): Login (hardcoded)
+
+* 📊 **ML Models**
+
+  * Deep Neural Network
+  * Support Vector Machine
+  * Logistic Regression
+  * Gradient Boosting Classifier
+
+* 📦 **Functionality**
+
+  * Transaction prediction using trained models
+  * Dashboard to compare model accuracy
+  * Store & visualize results
+  * View user profiles and predictions
+
+---
+
+## 🛠️ Technologies Used
+
+* **Backend**: Flask
+* **Frontend**: HTML, CSS, Bootstrap (via templates)
+* **Database**: MySQL
+* **ML/DL**: TensorFlow, Scikit-learn
+* **Model Saving**: Keras `.h5`, Joblib `.pkl`
+
+---
+
+## 🚀 Setup Instructions
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/yourusername/fraud-detection-flask.git
+cd fraud-detection-flask
+```
+
+---
+
+### 2. Setup Python Environment
+
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
+
+---
+
+### 3. Install Required Packages
+
+```bash
 pip install -r requirements.txt
+```
 
-Python Version:
-This project is built and tested with Python 3.12.6. Make sure you're using the correct version for compatibility.
+If `requirements.txt` doesn't exist, manually install:
 
-Step3: Database Setup
-Make sure you have XAMPP or MySQL Workbench installed.Import the SQL file
-Locate the file frauddetect_transactions.sql in the project directory.Import it into your MySQL server (via phpMyAdmin or MySQL Workbench).Ensure your database credentials in the project match your MySQL setup.
+```bash
+pip install flask pymysql pandas numpy scikit-learn tensorflow joblib
+```
 
-Step4: Running the App
-Start the application with:  python app.py
+---
 
-This will launch the web application. Open your browser and go to http://127.0.0.1/5000 to access it.
+### 4. Setup MySQL Database
 
-### Note: Ensure your MySQL server is running before launching the app.Adjust database connection settings in app.py if necessary.
+#### MySQL Configuration:
 
-Feel free to fork this repository and submit pull requests. Contributions are welcome!
+Update the following in `app.py` if needed:
+
+```python
+db_config = {
+    "host": "localhost",
+    "user": "root",
+    "password": "",
+    "database": "frauddetectdb"
+}
+```
+
+#### SQL Tables Required:
+
+Run the following SQL to set up the database:
+
+
+---
+
+### 5. Run the Application
+
+```bash
+python app.py
+```
+
+Then open in browser: `http://127.0.0.1:5000/`
+
+---
+
+## 👥 User Roles
+
+### 👤 Remote User
+
+* `/remote_user/register`
+* `/remote_user/login`
+* `/remote_user/dashboard`
+* `/remote_user/find_transaction`
+
+### 👨‍💼 Service Provider (Admin)
+
+* `/service_provider/login` → username: `admin`, password: `admin`
+* `/service_provider/dashboard`
+* `/service_provider/view_users`
+* `/service_provider/browse_datasets`
+* `/service_provider/view_train_test_accuracy_bar_chart`
+* `/service_provider/view_train_test_accuracy_results`
+* `/service_provider/view_financial_trans_detection_type`
+
+---
+
+## 📊 Model Outputs
+
+Trained models are saved as:
+
+* `fraud_detection_dnn_model.h5`
+* `svm_fraud_model.pkl`
+* `logistic_regression_fraud_model.pkl`
+* `gradient_boosting_fraud_model.pkl`
+
+Model comparison results are stored in:
+
+```json
+model_results.json
+```
+
+And visualized via bar charts and results page.
+
+---
+
+## 📈 ML Pipeline Highlights
+
+* Label Encoding for categorical features: `Gender`, `Bank_Name`, `Trans_Type`, `Location`
+* Feature Scaling via `StandardScaler`
+* Model Evaluation: Accuracy, Confusion Matrix, Classification Report
+* Best model is auto-selected based on accuracy and used for prediction
+
+---
+
+## ✅ Sample Transaction Prediction Workflow
+
+1. Login as remote user
+2. Navigate to `Find Transaction`
+3. Enter transaction details
+4. System will:
+
+   * Pick the most accurate model
+   * Preprocess your input
+   * Predict if the transaction is **Fraud** or **Not Fraud**
+   * Store result in DB
+
+---
+
+## 📌 Notes
+
+* Make sure your CSV file (`updated_synthetic_fraud_dataset.csv`) is in the root directory.
+* Models are trained when `/browse_datasets` is accessed by admin.
+* If you change dataset columns, update preprocessing accordingly.
+
+---
+
+## 🔒 Security Considerations
+
+* Admin credentials are hardcoded (`admin`/`admin`)
+* Passwords stored as plain text (should be hashed in production)
+* No CSRF protection
+* No input sanitization for SQL
+
+**Use only for academic/demo purposes.**
+
+---
